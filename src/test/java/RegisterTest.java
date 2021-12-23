@@ -36,6 +36,13 @@ public class RegisterTest {
         WebElement genderElement= driver.findElement(By.cssSelector("input[value='Male']"));
         genderElement.click();
 
+        WebElement emailAdressElement=driver.findElement(By.cssSelector("input[ng-model='EmailAdress']"));
+        emailAdressElement.sendKeys("noemi.pohrib@gmail.com");
+
+        WebElement phoneElement=driver.findElement((By.cssSelector("input[ng-model='Phone']")));
+        phoneElement.sendKeys("0744173502");
+
+
         WebElement hobbyElement=driver.findElement(By.id("checkbox3"));
                 hobbyElement.click();
 
@@ -43,9 +50,15 @@ public class RegisterTest {
                 Select skillsSelect=new Select(skillsElement);
                 skillsSelect.selectByVisibleText("Android");
 
+
+
         WebElement yearElement=driver.findElement(By.id("yearbox"));
         Select yearSelect=new Select(yearElement);
         yearSelect.selectByValue("1970");
+
+        WebElement countryElement=driver.findElement(By.id("country"));
+        Select countrySelect=new Select (countryElement);
+        countrySelect.selectByVisibleText("Australia");
 
         WebElement languageElement=driver.findElement(By.id("msdd"));
         languageElement.click();
@@ -57,6 +70,9 @@ public class RegisterTest {
                 languageElements.get(i).click();
             }
         }
+
+
+
 
 
         genderElement.click();
@@ -72,11 +88,15 @@ public class RegisterTest {
         String parolaElementValoare="parola123";
         parolaElement.sendKeys(parolaElementValoare);
 
+        //incarcam  o poza
+        WebElement imageElement=driver.findElement(By.id("imagesrc"));
+        imageElement.sendKeys("C:\\Users\\Noemi\\Desktop\\1.jpg");
+
         //validare pagina de "Register"
         String actualRegister=driver.getTitle();
       //  Assert.assertEquals("Register", "actualRegister");
-        String ceva="Register";
-        boolean proba=ceva==actualRegister;
+       // String ceva="Register";
+       // boolean proba=ceva==actualRegister;
     }
 
 
