@@ -1,3 +1,4 @@
+import Base.ShareData;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -5,24 +6,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class RegisterTest {
+public class RegisterTest extends ShareData {
 
-    public WebDriver driver;
 
     @Test
     public void testAutomat() {
-        //specificam unde se afla driverul pt browser
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
-        //deschidem un browser
-        driver=new ChromeDriver();
-        //introducem o adresa
-        driver.get("http://demo.automationtesting.in/Index.html");
-        //schimbam rezolutia in full-screen
-        driver.manage().window().maximize();
+
         //gasim "skip sign in element"
         WebElement skipSignInElement=driver.findElement(By.id("btn2"));
         skipSignInElement.click();
@@ -64,10 +58,14 @@ public class RegisterTest {
         languageElement.click();
 
 
+
         List<WebElement> languageElements=driver.findElements(By.xpath("//li[@class='ng-scope']/a"));
         for( Integer i=0; i<languageElements.size(); i++) {
             if (languageElements.get(i).getText().equals("Bulgarian")) {
+                Actions action=new Actions(driver);
+                action.moveToElement( languageElements.get(i)).perform();
                 languageElements.get(i).click();
+                break;
             }
         }
 

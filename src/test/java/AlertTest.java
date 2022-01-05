@@ -1,3 +1,4 @@
+import Base.ShareData;
 import net.bytebuddy.agent.builder.AgentBuilder;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -10,19 +11,11 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class AlertTest {
-    public WebDriver driver;
+public class AlertTest extends ShareData {
 
     @Test
     public void testAutomat() {
-        //specificam unde se afla driverul pt browser
-        System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
-        //deschidem un browser
-        driver = new ChromeDriver();
-        //introducem o adresa
-        driver.get("http://demo.automationtesting.in/Index.html");
-        //schimbam rezolutia in full-screen
-        driver.manage().window().maximize();
+
         //gasim "skip sign in element"
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         skipSignInElement.click();
